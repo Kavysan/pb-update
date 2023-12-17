@@ -5,7 +5,7 @@ import './index.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
         <Routes>
             { routes.map((route: any, index: any) => (
@@ -18,7 +18,7 @@ function App() {
                 />
             ))}
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
