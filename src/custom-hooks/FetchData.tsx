@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { server_calls } from "../api/server";
+import { useState, useEffect } from 'react'
+import { server_calls } from '../api/server'
 
 export const useGetData = () => {
     const [ contactData, setData ] = useState<[]>([])
@@ -9,12 +9,9 @@ export const useGetData = () => {
         setData(result)
     }
 
-    //useEffect on mount
     useEffect( () => {
         handleDataFetch();
     }, [])
-    
-  return {contactData, getData:handleDataFetch}
+
+    return { contactData, getData:handleDataFetch}
 }
-
-

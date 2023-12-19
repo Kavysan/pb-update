@@ -3,7 +3,7 @@ import routes from './config/routes';
 import Navbar from './components/Navbar';
 import './index.css';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import store from './redux/store';
 
 function App() {
   return (
