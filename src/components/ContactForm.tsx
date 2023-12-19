@@ -35,6 +35,7 @@ const ContactForm = (props:ContactFormProps) => {
 
       server_calls.create(store.getState())
       setTimeout( () => {window.location.reload()}, 500);
+      
     }
     
   }

@@ -1,29 +1,38 @@
-import { BrowserRouter, HashRouter, Routes, Route } from 'react-router-dom';
-import routes from './config/routes';
-import Navbar from './components/Navbar';
-import './index.css';
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import routes from './config/routes'
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
+import AuthChecker from './auth/AuthChecker'
+
 
 function App() {
+
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Navbar />
         <Provider store={store}>
           <Routes>
-              { routes.map((route: any, index: any) => (
-                <Route
-                  key = {index}
-                  path = {route.path}
-                  element= {
+            { routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  route.protected ? (
+                  <AuthChecker>
                     <route.component />
-                  }
-                  />
-              ))}
+                  </AuthChecker>
+                  ) : (
+                    <route.component />
+                  )
+                }
+                />
+            )) }
           </Routes>
         </Provider>
-    </HashRouter>
-  );
+    </BrowserRouter>
+  )
 }
 
 export default App

@@ -1,4 +1,3 @@
-import React from 'react'
 import ContactForm from './ContactForm';
 
 type Props = {
@@ -38,3 +37,4 @@ const Modal = ( props: Props ) => {
 }
 
 export default Modal
+
