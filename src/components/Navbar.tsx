@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button'
 import { signInWithPopup, signOut } from 'firebase/auth'
-import { auth, Providers } from '../config/firebase'
+import { auth, provider } from '../config/firebase'
 
 function Navbar() {
   const [isVisible, setIsVisible] = useState(false)
@@ -13,7 +13,8 @@ function Navbar() {
   }
 
   const signInOnClick = async () => {
-    const response = await signInWithPopup(auth, Providers.google);
+    // const response = await signInWithPopup(auth, Providers.google);
+    const response = await signInWithPopup(auth, provider);
     if ( response.user ) {
         location.reload();
     }
@@ -44,7 +45,7 @@ function Navbar() {
         { isVisible ? ( 
             <div className='w-full block flex-grow items-center'>
                 <div className="text-sm lg:flex-grow">
-                    <Button className="p-3 m-5 bg-teal-400 justify-center">
+                    <Button className="p-3 m-5 justify-center">
                         <div>
                             <Link to='/' onClick={ clicked } className='flex place-items-center mt-4 lg:inline-block lg:mt-0 
                             text-teal-200 hover:text-white mr-4'>
@@ -52,23 +53,23 @@ function Navbar() {
                             </Link>
                         </div>
                     </Button>
-                    <Button className="p-3 m-5 bg-teal-400 justify-center">
+                    {/* <Button className="p-3 m-5  justify-center">
                         <div>
                             <Link to='/about' onClick={ clicked } className='flex place-items-center mt-4 lg:inline-block lg:mt-0 
                             text-teal-200 hover:text-white mr-4'>
                                 About
                             </Link>
                         </div>
-                    </Button>
-                    <Button className="p-3 m-5 bg-teal-400 justify-center">
+                    </Button> */}
+                    {/* <Button className="p-3 m-5  justify-center">
                         <div>
                             <Link to='/contact' onClick={ clicked } className='flex place-items-center mt-4 lg:inline-block lg:mt-0 
                             text-teal-200 hover:text-white mr-4'>
                                 Contact
                             </Link>
                         </div>
-                    </Button>
-                    <Button className="p-3 m-5 bg-teal-400 justify-center">
+                    </Button> */}
+                    <Button className="p-3 m-5  justify-center">
                         <div>
                             <Link to='/dashboard' onClick={ clicked } className='flex place-items-center mt-4 lg:inline-block lg:mt-0 
                             text-teal-200 hover:text-white mr-4'>
@@ -79,7 +80,7 @@ function Navbar() {
                     {
                         !auth.currentUser ?
 
-                        <Button className='p-3 m-5 bg-teal-400 justify-center'>
+                        <Button className='p-3 m-5  justify-center'>
                             <div>
                                 <Link to="/" onClick={ () => { signInOnClick()}} className="flex place-items-center mt-4
                                  lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
@@ -88,7 +89,7 @@ function Navbar() {
                             </div>
                         </Button>
                         :
-                        <Button className='p-3 m-5 bg-teal-400 justify-center'>
+                        <Button className='p-3 m-5 justify-center'>
                             <div>
                                 <Link to="/" onClick={ () => { signOutOnClick()}} className="flex place-items-center mt-4
                                  lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
